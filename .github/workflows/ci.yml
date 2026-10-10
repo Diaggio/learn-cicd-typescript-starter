@@ -13,11 +13,22 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
 
-      - name: Print node version
-        run: node --version
-
       - name: Install dependencies
         run: npm ci
 
       - name: run tests
         run: npm run test --coverage
+
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: run formatting checkout
+        run: npm run format:check
